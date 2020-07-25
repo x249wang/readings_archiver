@@ -1,0 +1,10 @@
+apache-airflow==1.10.10
+boilerpy3==1.0.2
+boto3==1.9.159
+google-api-python-client==1.7.9
+google-auth==1.6.3
+pymongo==3.10.1
+requests==2.21.0
+torch==1.5.0+cpu
+transformers==2.10.0
+unidecode==1.1.1
