@@ -6,6 +6,7 @@ from .utils import (
     construct_gsheet_service,
     get_unix_ts,
     connect_to_mongo_collection,
+    add_constant_field_to_records,
 )
 import logging
 
@@ -75,16 +76,4 @@ def write_to_spreadsheet():
         )
 
         recorded_ts = get_unix_ts(datetime.utcnow())
-
-        records = collection.find({"recorded_ts": {"$exists": False}})
-
-        for record in records:
-
-            collection.update_one(
-                {"item_id": record["item_id"]},
-                {"$set": {"recorded_ts": recorded_ts}},
-            )
-
-            logger.info(
-                f"Added timestamp of recording for article {record['item_id']} to db"
-            )
+        add_constant_field_to_records(collection, "recorded_ts", recorded_ts)

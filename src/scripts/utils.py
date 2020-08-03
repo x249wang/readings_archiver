@@ -51,6 +51,17 @@ def connect_to_mongo_collection(conn_str, db_name, collection_name):
     return collection
 
 
+def add_constant_field_to_records(collection, field_name, field_value):
+
+    records = collection.find({field_name: {"$exists": False}})
+
+    for record in records:
+
+        collection.update_one(
+            {"item_id": record["item_id"]}, {"$set": {field_name: field_value}}
+        )
+
+
 def authorize_google_api(service_account_info, scopes):
 
     credentials = Credentials.from_service_account_info(
