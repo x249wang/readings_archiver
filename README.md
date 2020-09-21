@@ -2,6 +2,8 @@
 
 For this project, I built an Airflow-orchestrated pipeline to help keep track of all the articles I read. It retrieves articles I saved to the [Pocket app](https://getpocket.com/), scrapes article text, generates summaries and writes the results to a Google Sheet, so I have all the articles I found useful in one convenient place. It is motivated by my interest in working with cloud and workflow orchestration tools, as well as a need to better remember all the readings I do on a daily basis.
 
+<img src="assets/info_flow.png" width = "250">
+
 I chose to use Airflow as I needed a way to programmatically schedule a series of tasks that depend on the results of previous ones (i.e. retrieve list of articles --> scrape full text --> generate article summaries --> save everything to a spreadsheet). I chose MongoDB to store data from intermediate steps due to its flexible schema-less nature and ease of setup.
 
 The project runs on AWS, with the setup outlined below:
